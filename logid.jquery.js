@@ -1,5 +1,16 @@
-$.fn.logID = function () {
+(function($){
+$.fn.logAttr = function (opts) {
+	var defaults = {
+		attr: "id",
+		backup: "N/A",
+		useAlert: false
+	}
+
+	var options = $.extend({}, defaults, opts);
 	return this.each(function(){
-		console.log(this.id);
+		var val = $(this).attr(options.attr) || options.backup;
+		options.useAlert ? alert(val) : coslog.log(val);
+
 	});
-};
+};	
+})(jQuery);
